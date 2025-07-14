@@ -16,7 +16,6 @@ class _HomeTabState extends State<HomeTab> {
     'Verduras',
     'Carnes',
     'Pães',
-    'Cereais',
   ];
 
   String selectedCategory = 'Frutas';
@@ -92,7 +91,8 @@ class _HomeTabState extends State<HomeTab> {
               ),
             ),
           ),
-          SizedBox(
+          Container(
+            padding:const EdgeInsets.only(left: 35),
             height: 40,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
