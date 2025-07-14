@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:kitanda/src/auth/components/custom_text_field.dart';
 import 'package:kitanda/src/config/custom_colors.dart';
@@ -34,18 +35,59 @@ class SignUpScreen extends StatelessWidget {
                   child: Stack(
                     children: [
                       Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Expanded(
-                            child: Center(
-                              child: Text(
-                                'Cadastro',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 35,
+                          const SizedBox(
+                            height: 150,
+                          ),
+                          const Text.rich(
+                            TextSpan(
+                              style: TextStyle(fontSize: 40),
+                              children: [
+                                TextSpan(
+                                  text: 'Ki',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Tanda',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Center(
+                            child: SizedBox(
+                              height: 30,
+                              child: DefaultTextStyle(
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w200,
+                                  color: Colors.black,
+                                ),
+                                child: AnimatedTextKit(
+                                  animatedTexts: [
+                                    TyperAnimatedText(
+                                      'Economize mais.',
+                                      speed: const Duration(milliseconds: 160),
+                                    ),
+                                    TyperAnimatedText(
+                                      'Cadastre - se...',
+                                      speed: const Duration(milliseconds: 160),
+                                    ),
+                                  ],
+                                  pause: Durations.extralong1,
+                                  isRepeatingAnimation: false,
                                 ),
                               ),
                             ),
                           ),
+                          const Spacer(),
                           Container(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 32,
@@ -73,7 +115,7 @@ class SignUpScreen extends StatelessWidget {
                                   icon: Icons.person,
                                   label: 'Nome',
                                 ),
-                                 CustomTextField(
+                                CustomTextField(
                                   inputFormatters: [celFormatter],
                                   icon: Icons.phone,
                                   label: 'celular',

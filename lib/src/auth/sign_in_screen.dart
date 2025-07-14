@@ -2,6 +2,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:kitanda/src/auth/components/custom_text_field.dart';
 import 'package:kitanda/src/auth/sign_up_screen.dart';
+import 'package:kitanda/src/base/base_screen.dart';
 import 'package:kitanda/src/config/custom_colors.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -62,19 +63,23 @@ class SignInScreen extends StatelessWidget {
                                     animatedTexts: [
                                       TypewriterAnimatedText(
                                         'Orgânicos',
-                                        speed: const Duration(milliseconds: 120),
+                                        speed:
+                                            const Duration(milliseconds: 120),
                                       ),
                                       TypewriterAnimatedText(
                                         'Açougue',
-                                        speed: const Duration(milliseconds: 120),
+                                        speed:
+                                            const Duration(milliseconds: 120),
                                       ),
                                       TypewriterAnimatedText(
                                         'Padaria',
-                                        speed: const Duration(milliseconds: 120),
+                                        speed:
+                                            const Duration(milliseconds: 120),
                                       ),
                                       TypewriterAnimatedText(
                                         'Tudo que você precisa :)',
-                                        speed: const Duration(milliseconds: 160),
+                                        speed:
+                                            const Duration(milliseconds: 160),
                                       ),
                                     ],
                                     isRepeatingAnimation: true,
@@ -121,7 +126,15 @@ class SignInScreen extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(18),
                                   ),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(
+                                      builder: (c) {
+                                        return const BaseScreen();
+                                      },
+                                    ),
+                                  );
+                                },
                                 child: const Text(
                                   'Entrar',
                                   style: TextStyle(
@@ -152,7 +165,8 @@ class SignInScreen extends StatelessWidget {
                                     ),
                                   ),
                                   const Padding(
-                                    padding: EdgeInsets.symmetric(horizontal: 15.0),
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 15.0),
                                     child: Text('Ou'),
                                   ),
                                   Expanded(
@@ -178,7 +192,7 @@ class SignInScreen extends StatelessWidget {
                                 ),
                                 onPressed: () {
                                   Navigator.of(context).push(
-                                    MaterialPageRoute(builder:(c){
+                                    MaterialPageRoute(builder: (c) {
                                       return SignUpScreen();
                                     }),
                                   );
