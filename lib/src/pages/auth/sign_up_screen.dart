@@ -1,6 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
-import 'package:kitanda/src/auth/components/custom_text_field.dart';
+import 'package:kitanda/src/pages/auth/components/custom_text_field.dart';
 import 'package:kitanda/src/config/custom_colors.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 

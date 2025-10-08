@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:kitanda/src/config/app_data.dart' as appData;
 import 'package:kitanda/src/config/custom_colors.dart';
-import 'package:kitanda/src/home/components/category_tile.dart';
+import 'package:kitanda/src/pages/home/components/category_tile.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -10,14 +11,6 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  List<String> categories = [
-    'Frutas',
-    'Legumes',
-    'Verduras',
-    'Carnes',
-    'Pães',
-  ];
-
   String selectedCategory = 'Frutas';
 
   @override
@@ -26,22 +19,26 @@ class _HomeTabState extends State<HomeTab> {
       appBar: AppBar(
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20, top: 5),
+            padding: const EdgeInsets.only(
+              right: 20,
+              top: 5,
+            ),
             child: GestureDetector(
               onTap: () {},
               child: const Badge(
-                  backgroundColor: Colors.red,
-                  label: Text(
-                    '0',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 12,
-                    ),
-                  ),
-                  child: Icon(
-                    Icons.shopping_cart,
+                backgroundColor: Colors.red,
+                label: Text(
+                  '0',
+                  style: TextStyle(
                     color: Colors.white,
-                  )),
+                    fontSize: 12,
+                  ),
+                ),
+                child: Icon(
+                  Icons.shopping_cart,
+                  color: Colors.white,
+                ),
+              ),
             ),
           )
         ],
@@ -92,7 +89,7 @@ class _HomeTabState extends State<HomeTab> {
             ),
           ),
           Container(
-            padding:const EdgeInsets.only(left: 35),
+            padding: const EdgeInsets.only(left: 35),
             height: 40,
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
@@ -100,19 +97,37 @@ class _HomeTabState extends State<HomeTab> {
                 return CategoryTile(
                   onPressed: () {
                     setState(() {
-                       selectedCategory = categories[index];
+                      selectedCategory = appData.categories[index];
                     });
                   },
-                  category: categories[index],
-                  isSelected: categories[index] == selectedCategory,
+                  category: appData.categories[index],
+                  isSelected: appData.categories[index] == selectedCategory,
                 );
               },
               separatorBuilder: (_, index) => const SizedBox(
                 width: 10,
               ),
-              itemCount: categories.length,
+              itemCount: appData.categories.length,
             ),
-          )
+          ),
+          Expanded(
+            child: GridView.builder(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+              physics: const BouncingScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 10,
+                crossAxisSpacing: 10,
+                childAspectRatio: 9 / 11.5,
+              ),
+              itemCount: appData.items.length,
+              itemBuilder: (_, index) {
+                return Container(
+                  color: Colors.red,
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
